@@ -1,5 +1,4 @@
 import html
-import random
 import time
 from pathlib import Path
 
@@ -9,6 +8,7 @@ import torch
 from extensions.silero_tts import tts_preprocessor
 from modules import chat, shared, ui_chat
 from modules.utils import gradio
+import secrets
 
 torch._C._jit_set_profiling_mode(False)
 
@@ -163,7 +163,7 @@ def setup():
 
 def random_sentence():
     with open(Path("extensions/silero_tts/harvard_sentences.txt")) as f:
-        return random.choice(list(f))
+        return secrets.choice(list(f))
 
 
 def voice_preview(preview_text):
