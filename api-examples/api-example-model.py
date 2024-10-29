@@ -7,14 +7,14 @@ HOST = '0.0.0.0:5000'
 
 def generate(prompt, tokens=200):
     request = {'prompt': prompt, 'max_new_tokens': tokens}
-    response = requests.post(f'http://{HOST}/api/v1/generate', json=request)
+    response = requests.post(f'http://{HOST}/api/v1/generate', json=request, timeout=60)
 
     if response.status_code == 200:
         return response.json()['results'][0]['text']
 
 
 def model_api(request):
-    response = requests.post(f'http://{HOST}/api/v1/model', json=request)
+    response = requests.post(f'http://{HOST}/api/v1/model', json=request, timeout=60)
     return response.json()
 
 

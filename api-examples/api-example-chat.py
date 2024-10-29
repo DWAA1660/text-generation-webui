@@ -70,7 +70,7 @@ def run(user_input, history):
         'stopping_strings': []
     }
 
-    response = requests.post(URI, json=request)
+    response = requests.post(URI, json=request, timeout=60)
 
     if response.status_code == 200:
         result = response.json()['results'][0]['history']
